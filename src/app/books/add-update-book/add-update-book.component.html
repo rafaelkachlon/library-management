@@ -1,4 +1,5 @@
 <h2>{{title}}</h2>
+<h4 *ngIf="isNew">Catalog number and image will be generate automatically.</h4>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <label for="bookName">Book Name</label>
   <input type="text" id="bookName" class="p-inputtext p-component"

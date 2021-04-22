@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://www.googleapis.com/books/v1/volumes?q=harry potter&maxResults=15'
+  apiUrl: 'https://www.googleapis.com/books/v1/volumes?q=javascript&maxResults=40'
 };
 
 /*

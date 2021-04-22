@@ -14,14 +14,16 @@ export class BooksService {
   private books$ = new BehaviorSubject<BookModel[]>([]);
 
   constructor(private http: HttpClient) {
-    this.getBooksFromApi().pipe(first()).subscribe(books => this.books$.next(books));
-
+    this.getBooksFromApi().pipe(
+      first())
+      .subscribe(books => this.books$.next(books));
   }
 
   private getBooksFromApi(): Observable<BookModel[]> {
     return this.http.get(environment.apiUrl).pipe(
       map((data: any) => data.items),
-      map((items: Item[]) => items.filter(x => !!x.volumeInfo.authors)),
+      // Get only books with authors and images
+      map((items: Item[]) => items.filter(x => !!x.volumeInfo.authors && !!x.volumeInfo.imageLinks)),
       map((items: Item[]) => {
         return items.map(apiBook => this.createBookModel(apiBook));
       })
@@ -63,7 +65,7 @@ export class BooksService {
       authorName: apiBook.volumeInfo.authors[0],
       bookName: apiBook.volumeInfo.title,
       coverPhoto: apiBook.volumeInfo.imageLinks.thumbnail,
-      publicationDate: new Date(apiBook.volumeInfo.publishedDate)
+      publicationDate: apiBook.volumeInfo.publishedDate ? new Date(apiBook.volumeInfo.publishedDate) : new Date()
     } as BookModel;
   }
 }
