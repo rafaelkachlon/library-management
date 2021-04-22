@@ -7,12 +7,13 @@ import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {ModalMode} from '../models/modal-mode.enum';
 import {AddUpdateBookComponent} from '../add-update-book/add-update-book.component';
 import {ConfirmationService} from 'primeng/api';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-book-container',
   templateUrl: './book-container.component.html',
   styleUrls: ['./book-container.component.scss'],
-  providers: [DialogService, ConfirmationService]
+  providers: [DialogService, ConfirmationService, MessageService]
 })
 export class BookContainerComponent implements OnInit {
 
@@ -21,7 +22,8 @@ export class BookContainerComponent implements OnInit {
 
   constructor(private booksService: BooksService,
               private dialogService: DialogService,
-              private confirmation: ConfirmationService) {
+              private confirmation: ConfirmationService,
+              private message: MessageService) {
   }
 
   ngOnInit(): void {
@@ -48,6 +50,9 @@ export class BookContainerComponent implements OnInit {
         const {bookName, authorName, publicationDate} = updatedBook;
         const updated = {...book, bookName, authorName, publicationDate};
         this.booksService.updateBook(updated);
+        this.message.add({
+          severity: 'success', summary: 'Success', detail: `${book.bookName} updated successfully`
+        });
       }
     });
   }
@@ -62,6 +67,9 @@ export class BookContainerComponent implements OnInit {
           publicationDate: createdBook.publicationDate,
         };
         this.booksService.createBook(obj);
+        this.message.add({
+          severity: 'success', summary: 'Success', detail: `${createdBook.bookName} created successfully`
+        });
       }
     });
   }
@@ -71,6 +79,9 @@ export class BookContainerComponent implements OnInit {
       message: `Are you sure that you want to remove "${book.bookName}"?`,
       accept: () => {
         this.booksService.removeBook(book);
+        this.message.add({
+          severity: 'success', summary: 'Success', detail: `${book.bookName} removed successfully`
+        });
       }
     });
   }

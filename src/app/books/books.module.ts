@@ -9,6 +9,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {AddUpdateBookComponent} from './add-update-book/add-update-book.component';
 import {CalendarModule} from 'primeng/calendar';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     AutoCompleteModule,
     DynamicDialogModule,
     CalendarModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class BooksModule {
