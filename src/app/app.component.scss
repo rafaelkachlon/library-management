@@ -1,0 +1,17 @@
+.toolbar {
+  background: black;
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background: transparent;
+    color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}

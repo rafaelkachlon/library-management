@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .p-calendar, ::ng-deep .p-multiselect {
+  width: 100%;
+}
+
+::ng-deep .p-multiselect-label{
+  color: black;
+}
+.submit-btn {
+  margin-top: 20px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  color: #ff4d4d;
+}

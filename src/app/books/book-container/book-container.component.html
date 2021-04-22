@@ -1,0 +1,17 @@
+<div class="search-box">
+  <label for="bookFilter">Search by book name</label>
+  <input type="text" id="bookFilter"
+         [(ngModel)]="searchText" name="bookFilter"
+         (input)="filterBooks($event)"/>
+</div>
+
+<div class="book-cards">
+  <app-book-card *ngFor="let book of (books$| async)"
+                 [book]="book"
+                 (OnEditBook)="openEditModal($event)"
+                 (OnRemoveBook)="confirmRemove($event)"></app-book-card>
+</div>
+
+
+<p-confirmDialog icon="pi pi-exclamation-triangle"
+                 rejectButtonStyleClass="p-button-text"></p-confirmDialog>

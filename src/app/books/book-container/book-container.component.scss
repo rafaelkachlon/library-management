@@ -1,0 +1,29 @@
+.search-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 24px;
+  }
+
+  input {
+    font-size: 28px;
+  }
+}
+
+.book-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+::ng-deep.p-dialog {
+  width: 50vw;
+}
+
+@media only screen and (max-width: 768px) {
+  ::ng-deep .p-dialog {
+    width: 90vw;
+  }
+}

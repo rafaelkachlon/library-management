@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {BookContainerComponent} from './books/book-container/book-container.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'library-management';
+  title = 'Welcome to the library';
+
+  @ViewChild(BookContainerComponent) books: BookContainerComponent;
+
+  onCreate(): void {
+    this.books.onCreate(null);
+  }
 }

@@ -1,0 +1,16 @@
+<div class="book-card">
+  <div class="remove" (click)="onRemove()">
+    <i class="pi pi-trash"></i>
+  </div>
+  <div class="book-image">
+    <img [src]="book.coverPhoto" [attr.alt]="book.bookName">
+  </div>
+  <div class="book-info" (click)="editBook()">
+    <div class="book-name">{{book.bookName}}</div>
+    <div>{{book.authorName}}</div>
+    <div *ngIf="book.publicationDate">{{book.publicationDate | date: 'dd/MM/yyyy'}}</div>
+  </div>
+
+</div>
+
+

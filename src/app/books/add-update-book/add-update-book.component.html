@@ -1,0 +1,25 @@
+<h2>{{title}}</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="bookName">Book Name</label>
+  <input type="text" id="bookName" class="p-inputtext p-component"
+         placeholder="Enter book name..."
+         formControlName="bookName">
+  <div class="error" *ngIf="required('bookName')">Book name is required.</div>
+
+  <label for="authorName">Author Name</label>
+  <textarea id="authorName" rows="5" class="p-inputtextarea p-inputtext p-component"
+            placeholder="Enter author name..."
+            formControlName="authorName"></textarea>
+  <div class="error" *ngIf="required('authorName')">Author name is required.</div>
+
+  <label for="publicationDate">Publication Date</label>
+
+  <p-calendar inputId="publicationDate" formControlName="publicationDate"
+              [yearNavigator]="true" [monthNavigator]="true"
+              [readonlyInput]="true" yearRange="1900:2021">
+  </p-calendar>
+  <div class="error" *ngIf="required('publicationDate')">Publication date is required.</div>
+
+
+  <button class="submit-btn" pButton label="Save" type="submit" [disabled]="form.invalid"></button>
+</form>
