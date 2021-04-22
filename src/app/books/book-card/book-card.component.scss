@@ -10,8 +10,16 @@
   box-shadow: 4px 4px 18px 0 #989898;
   transition: transform .4s;
 
+
   &:hover {
     transform: scale(1.1);
+  }
+
+  .book-content {
+    display: flex;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .book-image img {
@@ -21,9 +29,7 @@
   .book-info {
     margin-left: 10px;
 
-    &:hover {
-      cursor: pointer;
-    }
+
 
     .book-name {
       font-size: larger;
@@ -35,6 +41,10 @@
       font-size: 20px;
       color: red;
       margin-right: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
